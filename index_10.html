@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cercle Empordà</title>
+<meta name="description" content="Un cercle privat d'empresaris al Baix Empordà: trobades, mentoria, negoci i cultura, per a persones que són o han estat empresàries.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🍇</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600&family=Work+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --clay: #B0512E;
+    --clay-dark: #8A3F23;
+    --stone: #AD8B44;
+    --stone-text: #8C6A2E;
+    --pine: #1E2E2C;
+    --pine-soft: #2B403C;
+    --paper: #EFE7D8;
+    --paper-warm: #E7DCC5;
+    --olive: #6E7A4C;
+    --ink: #2A241C;
+    --ink-soft: #55503f;
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  @media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto;} }
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Work Sans', sans-serif;
+    font-weight:400;
+    line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+    background-image:
+      radial-gradient(circle at 10% 8%, rgba(176,81,46,0.05), transparent 40%),
+      radial-gradient(circle at 90% 70%, rgba(110,122,76,0.06), transparent 45%);
+  }
+
+  h1,h2,h3{
+    font-family:'Fraunces', serif;
+    font-weight:500;
+    color:var(--pine);
+    margin:0;
+    text-wrap:balance;
+  }
+
+  a{color:inherit;}
+  a:focus-visible, button:focus-visible, .cta-btn:focus-visible{
+    outline:2px solid var(--clay-dark);
+    outline-offset:3px;
+    border-radius:2px;
+  }
+
+  .wrap{
+    max-width:1080px;
+    margin:0 auto;
+    padding:0 32px;
+  }
+
+  @media (max-width:640px){
+    .wrap{padding:0 22px;}
+  }
+
+  /* ---------- NAV ---------- */
+  header.nav{
+    position:sticky; top:0; z-index:20;
+    background:rgba(239,231,216,0.88);
+    backdrop-filter:blur(6px);
+    border-bottom:1px solid rgba(42,36,28,0.08);
+  }
+  .nav-inner{
+    max-width:1080px; margin:0 auto; padding:16px 32px;
+    display:flex; align-items:center; justify-content:space-between;
+    gap:16px; flex-wrap:wrap;
+  }
+  .nav-mark{
+    font-family:'Fraunces', serif; font-size:1.15rem; font-weight:500;
+    letter-spacing:0.01em; color:var(--pine);
+    flex:none;
+  }
+  .nav-mark span{color:var(--clay);}
+  .nav-right{display:flex; align-items:center; gap:20px; min-width:0; flex:1; justify-content:flex-end;}
+  .nav-links{
+    display:flex; gap:24px; font-size:0.92rem; color:var(--ink-soft);
+    overflow-x:auto; -webkit-overflow-scrolling:touch;
+    min-width:0; scrollbar-width:none;
+  }
+  .nav-links::-webkit-scrollbar{display:none;}
+  .nav-links a{text-decoration:none; transition:color .2s; white-space:nowrap;}
+  .nav-links a:hover{color:var(--clay);}
+
+  .lang-switch{
+    display:flex; gap:2px; flex:none;
+    border:1px solid rgba(42,36,28,0.2);
+    border-radius:100px; padding:2px;
+  }
+  .lang-switch button{
+    font-family:'Work Sans', sans-serif;
+    font-size:0.7rem; font-weight:600; letter-spacing:.04em;
+    padding:5px 10px; border:none; border-radius:100px;
+    background:none; color:var(--ink-soft); cursor:pointer;
+  }
+  .lang-switch button[aria-pressed="true"]{ background:var(--pine); color:var(--paper); }
+
+  @media (max-width:640px){
+    .nav-inner{padding:14px 22px;}
+    .nav-links{gap:16px; font-size:0.86rem;}
+  }
+
+  /* ---------- HERO ---------- */
+  .hero{
+    padding:96px 0 80px;
+    display:grid;
+    grid-template-columns:1.15fr 0.85fr;
+    gap:56px;
+    align-items:end;
+  }
+  @media (max-width:820px){
+    .hero{grid-template-columns:1fr; padding:56px 0 48px;}
+  }
+  .hero h1{
+    font-size:clamp(3rem, 7vw, 5.4rem);
+    line-height:0.98;
+    letter-spacing:-0.01em;
+  }
+  .hero .kicker{
+    font-size:1rem;
+    color:var(--clay-dark);
+    margin-bottom:18px;
+    font-style:italic;
+    font-family:'Fraunces', serif;
+  }
+  .hero-copy{
+    align-self:end;
+    padding-bottom:6px;
+    border-left:1px solid rgba(42,36,28,0.18);
+    padding-left:24px;
+  }
+  .hero-copy p{
+    font-size:1.05rem;
+    color:var(--ink-soft);
+    max-width:34ch;
+  }
+
+  .coastline{
+    width:100%;
+    height:auto;
+    display:block;
+    margin-top:10px;
+    overflow:visible;
+  }
+
+  /* ---------- SECTION shared ---------- */
+  section{
+    padding:74px 0;
+    border-top:1px solid rgba(42,36,28,0.1);
+  }
+  .section-head{
+    display:grid;
+    grid-template-columns:0.55fr 1fr;
+    gap:40px;
+    margin-bottom:44px;
+  }
+  @media (max-width:720px){
+    .section-head{grid-template-columns:1fr; gap:14px;}
+  }
+  .section-head h2{
+    font-size:clamp(1.8rem, 3.4vw, 2.5rem);
+  }
+  .section-head .lede{
+    color:var(--ink-soft);
+    font-size:1.02rem;
+    max-width:46ch;
+  }
+
+  /* ---------- PROPOSIT ---------- */
+  .pillars{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:1px;
+    background:rgba(42,36,28,0.14);
+    border:1px solid rgba(42,36,28,0.14);
+  }
+  @media (max-width:820px){ .pillars{grid-template-columns:repeat(2,1fr);} }
+  @media (max-width:480px){ .pillars{grid-template-columns:1fr;} }
+  .pillar{
+    background:var(--paper);
+    padding:30px 26px;
+  }
+  .pillar .num{
+    font-family:'Fraunces', serif;
+    font-style:italic;
+    color:var(--stone-text);
+    font-size:0.95rem;
+    margin-bottom:14px;
+    display:block;
+  }
+  .pillar p{
+    font-size:0.98rem;
+    color:var(--ink);
+    margin:0;
+  }
+
+  /* ---------- TERRITORI ---------- */
+  .territori-grid{
+    display:grid;
+    grid-template-columns:1.2fr 1fr;
+    gap:48px;
+    align-items:center;
+  }
+  @media (max-width:820px){ .territori-grid{grid-template-columns:1fr;} }
+  .town-list{list-style:none; margin:0; padding:0;}
+  .town-list li{
+    display:flex; align-items:baseline; gap:16px;
+    padding:14px 0;
+    border-bottom:1px solid rgba(42,36,28,0.12);
+    font-family:'Fraunces', serif;
+    font-size:1.2rem;
+    color:var(--pine);
+  }
+  .town-list li:first-child{border-top:1px solid rgba(42,36,28,0.12);}
+  .town-list .tag{
+    font-family:'Work Sans', sans-serif;
+    font-size:0.78rem;
+    color:var(--stone-text);
+    letter-spacing:0.02em;
+  }
+  .territori-map{width:100%; max-width:280px; justify-self:center; overflow:visible;}
+
+  /* ---------- ACTIVITATS ---------- */
+  .act-groups{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:40px 56px;
+  }
+  @media (max-width:720px){ .act-groups{grid-template-columns:1fr;} }
+  .act-group h3{
+    font-size:1.15rem;
+    font-style:italic;
+    color:var(--clay-dark);
+    margin-bottom:14px;
+    font-weight:500;
+  }
+  .act-group ul{
+    list-style:none; margin:0; padding:0;
+  }
+  .act-group li{
+    padding:9px 0;
+    border-bottom:1px dotted rgba(42,36,28,0.22);
+    font-size:0.98rem;
+    color:var(--ink);
+  }
+  .act-group li:last-child{border-bottom:none;}
+
+  /* ---------- ESTRUCTURA ---------- */
+  .roles{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:1px;
+    background:var(--pine);
+  }
+  @media (max-width:640px){ .roles{grid-template-columns:1fr;} }
+  .role{
+    background:var(--pine);
+    color:var(--paper);
+    padding:38px 34px;
+  }
+  .role h3{
+    color:var(--paper);
+    font-size:1.3rem;
+    margin-bottom:10px;
+  }
+  .role p{
+    color:rgba(239,231,216,0.75);
+    font-size:0.96rem;
+    margin:0;
+  }
+
+  /* ---------- CTA ---------- */
+  .cta{
+    text-align:left;
+    padding:88px 0 96px;
+    border-top:1px solid rgba(42,36,28,0.1);
+  }
+  .cta h2{
+    font-size:clamp(2rem, 4.2vw, 3.1rem);
+    max-width:16ch;
+    margin-bottom:22px;
+  }
+  .cta p{
+    color:var(--ink-soft);
+    max-width:48ch;
+    font-size:1.02rem;
+    margin-bottom:30px;
+  }
+  .cta-btn{
+    display:inline-block;
+    background:var(--clay);
+    color:var(--paper);
+    text-decoration:none;
+    padding:14px 30px;
+    font-family:'Fraunces', serif;
+    font-size:1.02rem;
+    border-radius:2px;
+    transition:background .2s;
+  }
+  .cta-btn:hover{background:var(--clay-dark);}
+
+  footer{
+    padding:30px 0 40px;
+    font-size:0.85rem;
+    color:var(--ink-soft);
+    display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px;
+  }
+
+  .reveal{
+    opacity:0; transform:translateY(14px);
+    transition:opacity .7s ease, transform .7s ease;
+  }
+  .reveal.in{opacity:1; transform:none;}
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="nav-inner">
+    <div class="nav-mark">Cercle <span>Empordà</span></div>
+    <div class="nav-right">
+      <nav class="nav-links">
+        <a href="#proposit" data-i18n="nav.proposit">Propòsit</a>
+        <a href="#territori" data-i18n="nav.territori">Territori</a>
+        <a href="#activitats" data-i18n="nav.activitats">Activitats</a>
+        <a href="#estructura" data-i18n="nav.estructura">Estructura</a>
+        <a href="#adhesio" data-i18n="nav.adhesio">Adhesió</a>
+      </nav>
+      <div class="lang-switch" role="group" aria-label="Idioma / Language">
+        <button type="button" data-lang="ca" aria-pressed="true">CA</button>
+        <button type="button" data-lang="es" aria-pressed="false">ES</button>
+        <button type="button" data-lang="en" aria-pressed="false">EN</button>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <section class="hero">
+    <div>
+      <div class="kicker" data-i18n="hero.kicker">Un cercle d'empresaris, entre l'Empordanet i la Costa Brava sud</div>
+      <h1>Cercle Empordà</h1>
+    </div>
+    <div class="hero-copy">
+      <p data-i18n="hero.copy">Un punt de trobada per a qui és, o ha estat, empresari — per compartir coneixement, obrir portes i barrejar la cultura empresarial local amb la internacional.</p>
+    </div>
+  </section>
+
+  <svg class="coastline" viewBox="0 0 1080 90" preserveAspectRatio="none" aria-hidden="true">
+    <path d="M0,55 C120,20 220,75 340,45 C460,15 540,60 660,35 C780,10 860,55 980,30 C1030,20 1060,28 1080,25"
+          fill="none" stroke="#AD8B44" stroke-width="1.4" opacity="0.55"/>
+    <path d="M0,68 C140,40 260,80 380,58 C500,36 580,72 700,50 C820,28 900,66 1020,44 C1050,38 1065,40 1080,38"
+          fill="none" stroke="#B0512E" stroke-width="1" opacity="0.35"/>
+  </svg>
+
+  <section id="proposit">
+    <div class="section-head">
+      <h2 data-i18n="proposit.h2">Propòsit</h2>
+      <p class="lede" data-i18n="proposit.lede">El Cercle neix per donar forma a una comunitat que ja existeix de manera informal: la de les persones de l'Empordà que entenen el negoci des de dins.</p>
+    </div>
+    <div class="pillars">
+      <div class="pillar"><span class="num" data-i18n="pillar.1.num">u</span><p data-i18n="pillar.1.body">Punt de trobada de persones que són, o han estat, empresàries en algun moment de la seva vida.</p></div>
+      <div class="pillar"><span class="num" data-i18n="pillar.2.num">dos</span><p data-i18n="pillar.2.body">Ajudar les persones amb inquietuds empresarials a fer el pas següent.</p></div>
+      <div class="pillar"><span class="num" data-i18n="pillar.3.num">tres</span><p data-i18n="pillar.3.body">Intercanvi de coneixement entre generacions i sectors.</p></div>
+      <div class="pillar"><span class="num" data-i18n="pillar.4.num">quatre</span><p data-i18n="pillar.4.body">Barrejar la cultura empresarial local amb la internacional.</p></div>
+    </div>
+  </section>
+
+  <section id="territori">
+    <div class="section-head">
+      <h2 data-i18n="territori.h2">Territori</h2>
+      <p class="lede" data-i18n="territori.lede">El Cercle es mou pel Baix Empordà, de la costa a l'interior, teixint una xarxa entre pobles que sovint funcionen d'esquena els uns als altres.</p>
+    </div>
+    <div class="territori-grid">
+      <ul class="town-list">
+        <li>Sant Feliu de Guíxols <span class="tag" data-i18n="tag.costa">costa</span></li>
+        <li>Platja d'Aro <span class="tag" data-i18n="tag.costa">costa</span></li>
+        <li>Palamós <span class="tag" data-i18n="tag.costa">costa</span></li>
+        <li>Palafrugell <span class="tag" data-i18n="tag.costa">costa</span></li>
+        <li>Torroella de Montgrí <span class="tag" data-i18n="tag.costa">costa</span></li>
+        <li>La Bisbal d'Empordà <span class="tag" data-i18n="tag.interior">interior</span></li>
+      </ul>
+      <svg class="territori-map" viewBox="0 0 320 340">
+        <path d="M180,10 C210,60 190,110 220,150 C245,185 230,230 200,270 C180,300 160,320 140,335"
+              fill="none" stroke="#1E2E2C" stroke-width="1.2" opacity="0.5"/>
+        <circle cx="200" cy="270" r="4" fill="#B0512E"/>
+        <text x="212" y="274" font-family="Work Sans" font-size="11" fill="#2A241C">St. Feliu de G.</text>
+        <circle cx="220" cy="230" r="4" fill="#B0512E"/>
+        <text x="232" y="234" font-family="Work Sans" font-size="11" fill="#2A241C">Platja d'Aro</text>
+        <circle cx="222" cy="188" r="4" fill="#B0512E"/>
+        <text x="234" y="192" font-family="Work Sans" font-size="11" fill="#2A241C">Palamós</text>
+        <circle cx="205" cy="140" r="4" fill="#B0512E"/>
+        <text x="217" y="144" font-family="Work Sans" font-size="11" fill="#2A241C">Palafrugell</text>
+        <circle cx="182" cy="60" r="4" fill="#B0512E"/>
+        <text x="194" y="64" font-family="Work Sans" font-size="11" fill="#2A241C">Torroella de M.</text>
+        <circle cx="130" cy="200" r="4" fill="#6E7A4C"/>
+        <text x="58" y="204" font-family="Work Sans" font-size="11" fill="#2A241C">La Bisbal</text>
+      </svg>
+    </div>
+  </section>
+
+  <section id="activitats">
+    <div class="section-head">
+      <h2 data-i18n="activitats.h2">Activitats</h2>
+      <p class="lede" data-i18n="activitats.lede">El calendari del Cercle combina negoci, cultura i vida social — sempre amb un peu al territori.</p>
+    </div>
+    <div class="act-groups">
+      <div class="act-group">
+        <h3 data-i18n="act.1.h">Trobades i vida social</h3>
+        <ul>
+          <li data-i18n="act.1.li.1">Local social multiús</li>
+          <li data-i18n="act.1.li.2">Dinars temàtics sobre temes d'interès</li>
+          <li data-i18n="act.1.li.3">Xarrades amb alcaldes</li>
+          <li data-i18n="act.1.li.4">Festa social anual</li>
+          <li data-i18n="act.1.li.5">Música i artistes</li>
+        </ul>
+      </div>
+      <div class="act-group">
+        <h3 data-i18n="act.2.h">Coneixement i mentoria</h3>
+        <ul>
+          <li data-i18n="act.2.li.1">Mentoring per a emprenedors</li>
+          <li data-i18n="act.2.li.2">Veu de l'experiència</li>
+          <li data-i18n="act.2.li.3">Desenvolupament de tallers</li>
+          <li data-i18n="act.2.li.4">Club de lectura</li>
+        </ul>
+      </div>
+      <div class="act-group">
+        <h3 data-i18n="act.3.h">Negoci i inversió</h3>
+        <ul>
+          <li data-i18n="act.3.li.1">Organització d'events empresarials</li>
+          <li data-i18n="act.3.li.2">Visites a empreses</li>
+          <li data-i18n="act.3.li.3">Business angel</li>
+        </ul>
+      </div>
+      <div class="act-group">
+        <h3 data-i18n="act.4.h">Cultura i territori</h3>
+        <ul>
+          <li data-i18n="act.4.li.1">Activitats culturals</li>
+          <li data-i18n="act.4.li.2">Coneixement d'artistes locals</li>
+          <li data-i18n="act.4.li.3">Cinema i TV social</li>
+          <li data-i18n="act.4.li.4">Viatges temàtics</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="estructura">
+    <div class="section-head">
+      <h2 data-i18n="estructura.h2">Estructura</h2>
+      <p class="lede" data-i18n="estructura.lede">Una organització deliberadament senzilla, pensada per créixer sense perdre el caràcter de cercle proper.</p>
+    </div>
+    <div class="roles">
+      <div class="role">
+        <h3 data-i18n="role.1.h">Gerent</h3>
+        <p data-i18n="role.1.body">Porta el dia a dia del Cercle: coordina l'agenda d'activitats, el local social i la relació amb els socis.</p>
+      </div>
+      <div class="role">
+        <h3 data-i18n="role.2.h">Captador de socis</h3>
+        <p data-i18n="role.2.body">Amplia la xarxa amb criteri, buscant persones que aportin experiència, sector o territori nous al Cercle.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="adhesio" class="cta">
+    <h2 data-i18n="adhesio.h2">Un cercle que es construeix per recomanació.</h2>
+    <p data-i18n="adhesio.body">L'entrada al Cercle Empordà es fa per invitació d'un soci. Si algú us n'ha parlat, o voleu proposar el nom d'una persona, escriviu-nos i us respondrem directament.</p>
+    <a class="cta-btn" href="mailto:info@cercleemporda.cat" data-i18n="adhesio.btn">Contactar amb el Cercle</a>
+  </section>
+
+  <footer>
+    <div>Cercle Empordà</div>
+    <div>Sant Feliu de Guíxols · Platja d'Aro · Palamós · Palafrugell · Torroella de Montgrí · La Bisbal d'Empordà</div>
+  </footer>
+
+</div>
+
+<script>
+(function(){
+  var I18N = {
+    ca: {
+      "nav.proposit":"Propòsit","nav.territori":"Territori","nav.activitats":"Activitats","nav.estructura":"Estructura","nav.adhesio":"Adhesió",
+      "hero.kicker":"Un cercle d'empresaris, entre l'Empordanet i la Costa Brava sud",
+      "hero.copy":"Un punt de trobada per a qui és, o ha estat, empresari — per compartir coneixement, obrir portes i barrejar la cultura empresarial local amb la internacional.",
+      "proposit.h2":"Propòsit",
+      "proposit.lede":"El Cercle neix per donar forma a una comunitat que ja existeix de manera informal: la de les persones de l'Empordà que entenen el negoci des de dins.",
+      "pillar.1.num":"u","pillar.1.body":"Punt de trobada de persones que són, o han estat, empresàries en algun moment de la seva vida.",
+      "pillar.2.num":"dos","pillar.2.body":"Ajudar les persones amb inquietuds empresarials a fer el pas següent.",
+      "pillar.3.num":"tres","pillar.3.body":"Intercanvi de coneixement entre generacions i sectors.",
+      "pillar.4.num":"quatre","pillar.4.body":"Barrejar la cultura empresarial local amb la internacional.",
+      "territori.h2":"Territori",
+      "territori.lede":"El Cercle es mou pel Baix Empordà, de la costa a l'interior, teixint una xarxa entre pobles que sovint funcionen d'esquena els uns als altres.",
+      "tag.costa":"costa","tag.interior":"interior",
+      "activitats.h2":"Activitats",
+      "activitats.lede":"El calendari del Cercle combina negoci, cultura i vida social — sempre amb un peu al territori.",
+      "act.1.h":"Trobades i vida social",
+      "act.1.li.1":"Local social multiús","act.1.li.2":"Dinars temàtics sobre temes d'interès","act.1.li.3":"Xarrades amb alcaldes","act.1.li.4":"Festa social anual","act.1.li.5":"Música i artistes",
+      "act.2.h":"Coneixement i mentoria",
+      "act.2.li.1":"Mentoring per a emprenedors","act.2.li.2":"Veu de l'experiència","act.2.li.3":"Desenvolupament de tallers","act.2.li.4":"Club de lectura",
+      "act.3.h":"Negoci i inversió",
+      "act.3.li.1":"Organització d'events empresarials","act.3.li.2":"Visites a empreses","act.3.li.3":"Business angel",
+      "act.4.h":"Cultura i territori",
+      "act.4.li.1":"Activitats culturals","act.4.li.2":"Coneixement d'artistes locals","act.4.li.3":"Cinema i TV social","act.4.li.4":"Viatges temàtics",
+      "estructura.h2":"Estructura",
+      "estructura.lede":"Una organització deliberadament senzilla, pensada per créixer sense perdre el caràcter de cercle proper.",
+      "role.1.h":"Gerent","role.1.body":"Porta el dia a dia del Cercle: coordina l'agenda d'activitats, el local social i la relació amb els socis.",
+      "role.2.h":"Captador de socis","role.2.body":"Amplia la xarxa amb criteri, buscant persones que aportin experiència, sector o territori nous al Cercle.",
+      "adhesio.h2":"Un cercle que es construeix per recomanació.",
+      "adhesio.body":"L'entrada al Cercle Empordà es fa per invitació d'un soci. Si algú us n'ha parlat, o voleu proposar el nom d'una persona, escriviu-nos i us respondrem directament.",
+      "adhesio.btn":"Contactar amb el Cercle"
+    },
+    es: {
+      "nav.proposit":"Propósito","nav.territori":"Territorio","nav.activitats":"Actividades","nav.estructura":"Estructura","nav.adhesio":"Adhesión",
+      "hero.kicker":"Un círculo de empresarios, entre l'Empordanet y la Costa Brava sur",
+      "hero.copy":"Un punto de encuentro para quien es, o ha sido, empresario — para compartir conocimiento, abrir puertas y mezclar la cultura empresarial local con la internacional.",
+      "proposit.h2":"Propósito",
+      "proposit.lede":"El Círculo nace para dar forma a una comunidad que ya existe de manera informal: la de las personas del Empordà que entienden el negocio desde dentro.",
+      "pillar.1.num":"uno","pillar.1.body":"Punto de encuentro de personas que son, o han sido, empresarias en algún momento de su vida.",
+      "pillar.2.num":"dos","pillar.2.body":"Ayudar a las personas con inquietudes empresariales a dar el siguiente paso.",
+      "pillar.3.num":"tres","pillar.3.body":"Intercambio de conocimiento entre generaciones y sectores.",
+      "pillar.4.num":"cuatro","pillar.4.body":"Mezclar la cultura empresarial local con la internacional.",
+      "territori.h2":"Territorio",
+      "territori.lede":"El Círculo se mueve por el Baix Empordà, de la costa al interior, tejiendo una red entre pueblos que a menudo funcionan de espaldas los unos a los otros.",
+      "tag.costa":"costa","tag.interior":"interior",
+      "activitats.h2":"Actividades",
+      "activitats.lede":"El calendario del Círculo combina negocio, cultura y vida social — siempre con un pie en el territorio.",
+      "act.1.h":"Encuentros y vida social",
+      "act.1.li.1":"Local social multiusos","act.1.li.2":"Comidas temáticas sobre temas de interés","act.1.li.3":"Charlas con alcaldes","act.1.li.4":"Fiesta social anual","act.1.li.5":"Música y artistas",
+      "act.2.h":"Conocimiento y mentoría",
+      "act.2.li.1":"Mentoring para emprendedores","act.2.li.2":"Voz de la experiencia","act.2.li.3":"Desarrollo de talleres","act.2.li.4":"Club de lectura",
+      "act.3.h":"Negocio e inversión",
+      "act.3.li.1":"Organización de eventos empresariales","act.3.li.2":"Visitas a empresas","act.3.li.3":"Business angel",
+      "act.4.h":"Cultura y territorio",
+      "act.4.li.1":"Actividades culturales","act.4.li.2":"Conocer a artistas locales","act.4.li.3":"Cine y TV social","act.4.li.4":"Viajes temáticos",
+      "estructura.h2":"Estructura",
+      "estructura.lede":"Una organización deliberadamente sencilla, pensada para crecer sin perder el carácter de círculo cercano.",
+      "role.1.h":"Gerente","role.1.body":"Lleva el día a día del Círculo: coordina la agenda de actividades, el local social y la relación con los socios.",
+      "role.2.h":"Captador de socios","role.2.body":"Amplía la red con criterio, buscando personas que aporten experiencia, sector o territorio nuevos al Círculo.",
+      "adhesio.h2":"Un círculo que se construye por recomendación.",
+      "adhesio.body":"La entrada al Cercle Empordà se hace por invitación de un socio. Si alguien os ha hablado de ello, o queréis proponer el nombre de una persona, escribidnos y os responderemos directamente.",
+      "adhesio.btn":"Contactar con el Círculo"
+    },
+    en: {
+      "nav.proposit":"Purpose","nav.territori":"Territory","nav.activitats":"Activities","nav.estructura":"Structure","nav.adhesio":"Join",
+      "hero.kicker":"A circle of entrepreneurs, between l'Empordanet and the southern Costa Brava",
+      "hero.copy":"A meeting point for anyone who is, or has been, an entrepreneur — to share knowledge, open doors and blend local business culture with international perspectives.",
+      "proposit.h2":"Purpose",
+      "proposit.lede":"The Circle exists to give shape to a community that already exists informally: the people of the Empordà who understand business from the inside.",
+      "pillar.1.num":"one","pillar.1.body":"A meeting point for people who are, or have been, entrepreneurs at some point in their lives.",
+      "pillar.2.num":"two","pillar.2.body":"Helping people with an entrepreneurial itch take the next step.",
+      "pillar.3.num":"three","pillar.3.body":"Exchange of knowledge between generations and industries.",
+      "pillar.4.num":"four","pillar.4.body":"Blending local business culture with the international.",
+      "territori.h2":"Territory",
+      "territori.lede":"The Circle moves across the Baix Empordà, from coast to inland, weaving a network between towns that often turn their backs on one another.",
+      "tag.costa":"coast","tag.interior":"inland",
+      "activitats.h2":"Activities",
+      "activitats.lede":"The Circle's calendar blends business, culture and social life — always with one foot in the territory.",
+      "act.1.h":"Gatherings and social life",
+      "act.1.li.1":"Multi-purpose social venue","act.1.li.2":"Themed lunches on topics of interest","act.1.li.3":"Talks with local mayors","act.1.li.4":"Annual social gathering","act.1.li.5":"Music and artists",
+      "act.2.h":"Knowledge and mentoring",
+      "act.2.li.1":"Mentoring for entrepreneurs","act.2.li.2":"Voice of experience","act.2.li.3":"Workshop development","act.2.li.4":"Book club",
+      "act.3.h":"Business and investment",
+      "act.3.li.1":"Organising business events","act.3.li.2":"Company visits","act.3.li.3":"Business angel network",
+      "act.4.h":"Culture and territory",
+      "act.4.li.1":"Cultural activities","act.4.li.2":"Meeting local artists","act.4.li.3":"Social cinema and TV","act.4.li.4":"Themed trips",
+      "estructura.h2":"Structure",
+      "estructura.lede":"A deliberately simple organisation, designed to grow without losing the feel of a close-knit circle.",
+      "role.1.h":"Manager","role.1.body":"Runs the Circle day to day: coordinates the activity calendar, the social venue and the relationship with members.",
+      "role.2.h":"Member recruiter","role.2.body":"Grows the network with judgement, looking for people who bring new experience, industries or territory to the Circle.",
+      "adhesio.h2":"A circle built on recommendation.",
+      "adhesio.body":"Joining Cercle Empordà happens through a member's invitation. If someone has told you about it, or you'd like to put forward someone's name, write to us and we'll reply directly.",
+      "adhesio.btn":"Get in touch with the Circle"
+    }
+  };
+
+  var current = "ca";
+
+  function applyLang(lang){
+    if(!I18N[lang]) return;
+    current = lang;
+    document.documentElement.lang = lang;
+    document.querySelectorAll("[data-i18n]").forEach(function(el){
+      var key = el.getAttribute("data-i18n");
+      if(I18N[lang][key] !== undefined) el.textContent = I18N[lang][key];
+    });
+    document.querySelectorAll(".lang-switch button").forEach(function(b){
+      b.setAttribute("aria-pressed", b.getAttribute("data-lang") === lang ? "true" : "false");
+    });
+    try{ localStorage.setItem("cercle-emporda-lang", lang); }catch(e){}
+  }
+
+  document.querySelectorAll(".lang-switch button").forEach(function(b){
+    b.addEventListener("click", function(){ applyLang(b.getAttribute("data-lang")); });
+  });
+
+  var saved = null;
+  try{ saved = localStorage.getItem("cercle-emporda-lang"); }catch(e){}
+  applyLang(saved && I18N[saved] ? saved : "ca");
+
+  var reduceMotion = false;
+  try{ reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches; }catch(e){}
+
+  if("IntersectionObserver" in window && !reduceMotion){
+    var items = document.querySelectorAll(".pillar, .act-group, .role, .town-list li");
+    var toObserve = [];
+    items.forEach(function(el){
+      var rect = el.getBoundingClientRect();
+      var alreadyVisible = rect.top < window.innerHeight && rect.bottom > 0;
+      if(!alreadyVisible){
+        el.classList.add("reveal");
+        toObserve.push(el);
+      }
+    });
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if(e.isIntersecting){ e.target.classList.add("in"); io.unobserve(e.target); }
+      });
+    }, { threshold: 0.15 });
+    toObserve.forEach(function(el){ io.observe(el); });
+  }
+})();
+</script>
+</body>
+</html>
