@@ -322,6 +322,46 @@
     transition:opacity .7s ease, transform .7s ease;
   }
   .reveal.in{opacity:1; transform:none;}
+
+  /* ---------- INSTALACIONS ---------- */
+  .local-real{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:24px;
+    margin-bottom:40px;
+  }
+  @media (max-width:640px){ .local-real{grid-template-columns:1fr;} }
+  .local-real figure, .gallery figure{margin:0;}
+  .local-real img, .gallery img{
+    width:100%;
+    height:260px;
+    object-fit:cover;
+    display:block;
+    border-radius:2px;
+  }
+  .gallery img{height:190px;}
+  figcaption{
+    font-family:'Fraunces', serif;
+    font-style:italic;
+    font-size:0.92rem;
+    color:var(--ink-soft);
+    margin-top:10px;
+  }
+  .gallery-note{
+    font-family:'Work Sans', sans-serif;
+    font-size:0.85rem;
+    letter-spacing:.03em;
+    text-transform:uppercase;
+    color:var(--stone-text);
+    margin:0 0 20px;
+  }
+  .gallery{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:22px 24px;
+  }
+  @media (max-width:820px){ .gallery{grid-template-columns:repeat(2,1fr);} }
+  @media (max-width:480px){ .gallery{grid-template-columns:1fr;} }
 </style>
 </head>
 <body>
@@ -334,6 +374,7 @@
         <a href="#proposit" data-i18n="nav.proposit">Propòsit</a>
         <a href="#territori" data-i18n="nav.territori">Territori</a>
         <a href="#activitats" data-i18n="nav.activitats">Activitats</a>
+        <a href="#instalacions" data-i18n="nav.instalacions">El local</a>
         <a href="#estructura" data-i18n="nav.estructura">Estructura</a>
         <a href="#adhesio" data-i18n="nav.adhesio">Adhesió</a>
       </nav>
@@ -456,6 +497,61 @@
     </div>
   </section>
 
+  <section id="instalacions">
+    <div class="section-head">
+      <h2 data-i18n="instalacions.h2">El local</h2>
+      <p class="lede" data-i18n="instalacions.lede">Encara no tenim l'espai enllestit: aquestes fotografies mostren el local real, pendent de reforma, i l'ambient i l'estil que en volem fer.</p>
+    </div>
+
+    <div class="local-real">
+      <figure>
+        <img src="images/edifici.jpg" alt="Edifici on s'ubicarà el Cercle Empordà" loading="lazy">
+        <figcaption data-i18n="instalacions.edifici">L'edifici, al cor del Baix Empordà</figcaption>
+      </figure>
+      <figure>
+        <img src="images/porta.jpg" alt="Porta d'entrada amb el rètol del Cercle Empordà" loading="lazy">
+        <figcaption data-i18n="instalacions.porta">L'entrada, ja retolada</figcaption>
+      </figure>
+    </div>
+
+    <p class="gallery-note" data-i18n="instalacions.gallery-note">Referències d'estil per als futurs espais interiors</p>
+
+    <div class="gallery">
+      <figure>
+        <img src="images/recepcio.jpg" alt="Referència d'estil per a la recepció" loading="lazy">
+        <figcaption data-i18n="instalacions.recepcio">Recepció</figcaption>
+      </figure>
+      <figure>
+        <img src="images/terrassa.jpg" alt="Referència d'estil per a la terrassa" loading="lazy">
+        <figcaption data-i18n="instalacions.terrassa">Terrassa</figcaption>
+      </figure>
+      <figure>
+        <img src="images/cuina.jpg" alt="Referència d'estil per a la cuina" loading="lazy">
+        <figcaption data-i18n="instalacions.cuina">Cuina</figcaption>
+      </figure>
+      <figure>
+        <img src="images/salo.jpg" alt="Referència d'estil per al saló" loading="lazy">
+        <figcaption data-i18n="instalacions.salo">Saló</figcaption>
+      </figure>
+      <figure>
+        <img src="images/sala-fumadors.jpg" alt="Referència d'estil per a la sala de fumadors" loading="lazy">
+        <figcaption data-i18n="instalacions.fumadors">Sala de fumadors</figcaption>
+      </figure>
+      <figure>
+        <img src="images/salo-gran.jpg" alt="Referència d'estil per al saló principal" loading="lazy">
+        <figcaption data-i18n="instalacions.salo-gran">Saló principal</figcaption>
+      </figure>
+      <figure>
+        <img src="images/sala-reunions.jpg" alt="Referència d'estil per a la sala de reunions" loading="lazy">
+        <figcaption data-i18n="instalacions.reunions">Sala de reunions</figcaption>
+      </figure>
+      <figure>
+        <img src="images/sala-conferencies.jpg" alt="Referència d'estil per a la sala de conferències" loading="lazy">
+        <figcaption data-i18n="instalacions.conferencies">Sala de conferències</figcaption>
+      </figure>
+    </div>
+  </section>
+
   <section id="estructura">
     <div class="section-head">
       <h2 data-i18n="estructura.h2">Estructura</h2>
@@ -490,7 +586,7 @@
 (function(){
   var I18N = {
     ca: {
-      "nav.proposit":"Propòsit","nav.territori":"Territori","nav.activitats":"Activitats","nav.estructura":"Estructura","nav.adhesio":"Adhesió",
+      "nav.proposit":"Propòsit","nav.territori":"Territori","nav.activitats":"Activitats","nav.instalacions":"El local","nav.estructura":"Estructura","nav.adhesio":"Adhesió",
       "hero.kicker":"Un cercle d'empresaris, entre l'Empordanet i la Costa Brava sud",
       "hero.copy":"Un punt de trobada per a qui és, o ha estat, empresari — per compartir coneixement, obrir portes i barrejar la cultura empresarial local amb la internacional.",
       "proposit.h2":"Propòsit",
@@ -512,6 +608,19 @@
       "act.3.li.1":"Organització d'events empresarials","act.3.li.2":"Visites a empreses","act.3.li.3":"Business angel",
       "act.4.h":"Cultura i territori",
       "act.4.li.1":"Activitats culturals","act.4.li.2":"Coneixement d'artistes locals","act.4.li.3":"Cinema i TV social","act.4.li.4":"Viatges temàtics",
+      "instalacions.h2":"El local",
+      "instalacions.lede":"Encara no tenim l'espai enllestit: aquestes fotografies mostren el local real, pendent de reforma, i l'ambient i l'estil que en volem fer.",
+      "instalacions.edifici":"L'edifici, al cor del Baix Empordà",
+      "instalacions.porta":"L'entrada, ja retolada",
+      "instalacions.gallery-note":"Referències d'estil per als futurs espais interiors",
+      "instalacions.recepcio":"Recepció",
+      "instalacions.terrassa":"Terrassa",
+      "instalacions.cuina":"Cuina",
+      "instalacions.salo":"Saló",
+      "instalacions.fumadors":"Sala de fumadors",
+      "instalacions.salo-gran":"Saló principal",
+      "instalacions.reunions":"Sala de reunions",
+      "instalacions.conferencies":"Sala de conferències",
       "estructura.h2":"Estructura",
       "estructura.lede":"Una organització deliberadament senzilla, pensada per créixer sense perdre el caràcter de cercle proper.",
       "role.1.h":"Gerent","role.1.body":"Porta el dia a dia del Cercle: coordina l'agenda d'activitats, el local social i la relació amb els socis.",
@@ -521,7 +630,7 @@
       "adhesio.btn":"Contactar amb el Cercle"
     },
     es: {
-      "nav.proposit":"Propósito","nav.territori":"Territorio","nav.activitats":"Actividades","nav.estructura":"Estructura","nav.adhesio":"Adhesión",
+      "nav.proposit":"Propósito","nav.territori":"Territorio","nav.activitats":"Actividades","nav.instalacions":"El local","nav.estructura":"Estructura","nav.adhesio":"Adhesión",
       "hero.kicker":"Un círculo de empresarios, entre l'Empordanet y la Costa Brava sur",
       "hero.copy":"Un punto de encuentro para quien es, o ha sido, empresario — para compartir conocimiento, abrir puertas y mezclar la cultura empresarial local con la internacional.",
       "proposit.h2":"Propósito",
@@ -543,6 +652,19 @@
       "act.3.li.1":"Organización de eventos empresariales","act.3.li.2":"Visitas a empresas","act.3.li.3":"Business angel",
       "act.4.h":"Cultura y territorio",
       "act.4.li.1":"Actividades culturales","act.4.li.2":"Conocer a artistas locales","act.4.li.3":"Cine y TV social","act.4.li.4":"Viajes temáticos",
+      "instalacions.h2":"El local",
+      "instalacions.lede":"Todavía no tenemos el espacio terminado: estas fotografías muestran el local real, pendiente de reforma, y el ambiente y estilo que queremos crear.",
+      "instalacions.edifici":"El edificio, en el corazón del Baix Empordà",
+      "instalacions.porta":"La entrada, ya rotulada",
+      "instalacions.gallery-note":"Referencias de estilo para los futuros espacios interiores",
+      "instalacions.recepcio":"Recepción",
+      "instalacions.terrassa":"Terraza",
+      "instalacions.cuina":"Cocina",
+      "instalacions.salo":"Salón",
+      "instalacions.fumadors":"Sala de fumadores",
+      "instalacions.salo-gran":"Salón principal",
+      "instalacions.reunions":"Sala de reuniones",
+      "instalacions.conferencies":"Sala de conferencias",
       "estructura.h2":"Estructura",
       "estructura.lede":"Una organización deliberadamente sencilla, pensada para crecer sin perder el carácter de círculo cercano.",
       "role.1.h":"Gerente","role.1.body":"Lleva el día a día del Círculo: coordina la agenda de actividades, el local social y la relación con los socios.",
@@ -552,7 +674,7 @@
       "adhesio.btn":"Contactar con el Círculo"
     },
     en: {
-      "nav.proposit":"Purpose","nav.territori":"Territory","nav.activitats":"Activities","nav.estructura":"Structure","nav.adhesio":"Join",
+      "nav.proposit":"Purpose","nav.territori":"Territory","nav.activitats":"Activities","nav.instalacions":"The venue","nav.estructura":"Structure","nav.adhesio":"Join",
       "hero.kicker":"A circle of entrepreneurs, between l'Empordanet and the southern Costa Brava",
       "hero.copy":"A meeting point for anyone who is, or has been, an entrepreneur — to share knowledge, open doors and blend local business culture with international perspectives.",
       "proposit.h2":"Purpose",
@@ -574,6 +696,19 @@
       "act.3.li.1":"Organising business events","act.3.li.2":"Company visits","act.3.li.3":"Business angel network",
       "act.4.h":"Culture and territory",
       "act.4.li.1":"Cultural activities","act.4.li.2":"Meeting local artists","act.4.li.3":"Social cinema and TV","act.4.li.4":"Themed trips",
+      "instalacions.h2":"The venue",
+      "instalacions.lede":"The space isn't finished yet: these photographs show the real premises, awaiting renovation, and the atmosphere and style we want to create there.",
+      "instalacions.edifici":"The building, in the heart of the Baix Empordà",
+      "instalacions.porta":"The entrance, already signed",
+      "instalacions.gallery-note":"Style references for the future interior spaces",
+      "instalacions.recepcio":"Reception",
+      "instalacions.terrassa":"Terrace",
+      "instalacions.cuina":"Kitchen",
+      "instalacions.salo":"Lounge",
+      "instalacions.fumadors":"Cigar lounge",
+      "instalacions.salo-gran":"Main lounge",
+      "instalacions.reunions":"Meeting room",
+      "instalacions.conferencies":"Conference room",
       "estructura.h2":"Structure",
       "estructura.lede":"A deliberately simple organisation, designed to grow without losing the feel of a close-knit circle.",
       "role.1.h":"Manager","role.1.body":"Runs the Circle day to day: coordinates the activity calendar, the social venue and the relationship with members.",
@@ -612,7 +747,7 @@
   try{ reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches; }catch(e){}
 
   if("IntersectionObserver" in window && !reduceMotion){
-    var items = document.querySelectorAll(".pillar, .act-group, .role, .town-list li");
+    var items = document.querySelectorAll(".pillar, .act-group, .role, .town-list li, .local-real figure, .gallery figure");
     var toObserve = [];
     items.forEach(function(el){
       var rect = el.getBoundingClientRect();
